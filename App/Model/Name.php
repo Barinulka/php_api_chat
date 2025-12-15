@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Model;
+
 class Name
 {
     public function __construct(
