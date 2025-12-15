@@ -9,16 +9,17 @@ spl_autoload_register('load');
 function load($className): void
 {
 
-    $file = str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
+    $file = sprintf('%s.php', $className);
+    $file = str_replace('\\', DIRECTORY_SEPARATOR, $file);
     if (file_exists($file)) {
         require $file;
     }
 }
+$name = new Name('Piter', 'Parker');
 
-$user = new User(1, 'User Username', 'Login');
+$user = new User(1, $name, 'Login');
 echo $user;
 
-$name = new Name('Piter', 'Parker');
 $person = new Person($name, new DateTimeImmutable());
 
 echo $person;

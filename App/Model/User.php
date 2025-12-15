@@ -6,12 +6,12 @@ class User
 {
     /**
      * @param int $id
-     * @param string $username
+     * @param Name $username
      * @param string $login
      */
     public function __construct(
         private int $id,
-        private string $username,
+        private Name $username,
         private string $login
     ){
     }
