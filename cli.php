@@ -10,8 +10,9 @@ spl_autoload_register('load');
 function load($className): void
 {
 
-    $file = sprintf('%s.php', $className);
+    $file = "{$className}.php";
     $file = str_replace('\\', DIRECTORY_SEPARATOR, $file);
+    $file = str_replace('App', 'src', $file);
     if (file_exists($file)) {
         require $file;
     }
