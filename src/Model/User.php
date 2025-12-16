@@ -20,4 +20,34 @@ class User
     {
         return sprintf("Пользователь %d с именем %s и логином %s", $this->id, $this->username, $this->login) . PHP_EOL;
     }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    public function getUsername(): Name
+    {
+        return $this->username;
+    }
+
+    public function setUsername(Name $username): void
+    {
+        $this->username = $username;
+    }
+
+    public function getLogin(): string
+    {
+        return $this->login;
+    }
+
+    public function setLogin(string $login): void
+    {
+        $this->login = $login;
+    }
 }
