@@ -1,20 +1,36 @@
 <?php
 
-spl_autoload_register('load');
+use App\Exception\BaseException;
+use App\Model\Name;
+use App\Model\Person;
+use App\Model\Post;
+use App\Model\User;
+use App\Repository\User\InMemoryUserRepository;
 
-function load($className): void
-{
-    $file = sprintf('%s.php', $className);
+include __DIR__ . '/vendor/autoload.php';
+include_once __DIR__ . '/functions.php';
 
-    if (file_exists($file)) {
-        require $file;
-    }
+$faker = Faker\Factory::create();
+
+$userRepository = new InMemoryUserRepository();
+
+$name = new Name(
+    $faker->firstName,
+    $faker->lastName,
+);
+
+$user = new User(
+    1,
+    $name,
+    $faker->userName,
+);
+
+try {
+    $userRepository->save($user);
+
+    echo $userRepository->get(1);
+} catch (BaseException $e) {
+    echo sprintf('code:%d, message:%s', $e->getHttpStatusCode(), $e->getMessage());
+} catch (\Exception $e) {
+    echo "code:500, message:{$e->getMessage()}";
 }
-
-$user = new User(1, 'User Username', 'Login');
-echo $user;
-
-$name = new Name('Piter', 'Parker');
-$person = new Person($name, new DateTimeImmutable());
-
-echo $person;

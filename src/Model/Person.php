@@ -1,10 +1,12 @@
 <?php
 
+namespace App\Model;
+
 class Person
 {
     public function __construct(
         private Name $name,
-        private DateTimeImmutable $registeredAt,
+        private \DateTimeImmutable $registeredAt,
     ) {
     }
 
