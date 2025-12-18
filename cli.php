@@ -5,7 +5,7 @@ use App\Model\Name;
 use App\Model\Person;
 use App\Model\Post;
 use App\Model\User;
-use App\Repository\User\InMemoryUserRepository;
+use App\Repository\UserRepository\InMemoryUserRepository;
 
 include __DIR__ . '/vendor/autoload.php';
 include_once __DIR__ . '/functions.php';
